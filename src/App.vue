@@ -13,6 +13,10 @@ export default {
   name: 'App',
   components: {
     Header,Footer
+  },
+  mounted() {
+    //解决多次调用接口，除了缓存TypeNav的另一种解决方式
+    this.$store.dispatch('categoryList')
   }
 }
 </script>

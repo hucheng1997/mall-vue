@@ -55,7 +55,15 @@ export default {
       //1、param参数+query参数
       // this.$router.push(`/search/${this.keyword}?k=${this.keyword.toUpperCase()}`)
       //2、对象方式
-      this.$router.push({name: 'search', params: {keyword: this.keyword}, query: {k: this.keyword.toUpperCase()}})
+      if (this.$route.query) {
+        let location = {
+          name: 'search',
+          params: {keyword: this.keyword || undefined}
+
+        }
+        location.query = this.$route.query
+        this.$router.push(location)
+      }
     }
   }
 }
