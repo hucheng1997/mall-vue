@@ -1,22 +1,23 @@
 <template>
   <!--列表-->
-  <div class="list-container">
+  <div class="list-container" >
     <div class="sortList clearfix">
       <div class="center">
         <!--banner轮播-->
-        <div class="swiper-container" id="mySwiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="./images/banner1.jpg"/>
-            </div>
-          </div>
-          <!-- 如果需要分页器 -->
-          <div class="swiper-pagination"></div>
+        <Carousel :list="bannerList"></Carousel>
+<!--        <div class="swiper-container" id="mySwiper" ref="cur">-->
+<!--          <div class="swiper-wrapper">-->
+<!--            <div class="swiper-slide" v-for="( carouse1 ,index) in bannerList" :key="carouse1.id">-->
+<!--              <img :src="carouse1.imgUrl "/>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; 如果需要分页器 &ndash;&gt;-->
+<!--          <div class="swiper-pagination"></div>-->
 
-          <!-- 如果需要导航按钮 -->
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </div>
+<!--          &lt;!&ndash; 如果需要导航按钮 &ndash;&gt;-->
+<!--          <div class="swiper-button-prev"></div>-->
+<!--          <div class="swiper-button-next"></div>-->
+<!--        </div>-->
       </div>
       <div class="right">
         <div class="news">
@@ -103,7 +104,6 @@
 
 <script>
 import {mapState} from "vuex";
-
 export default {
   name: "ListContainer",
   mounted() {
@@ -113,6 +113,8 @@ export default {
     ...mapState({
       bannerList: state => state.home.bannerList
     })
+  },
+  watch:{
   }
 
 }
