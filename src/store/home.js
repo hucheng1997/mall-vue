@@ -1,11 +1,12 @@
-import {reqCategoryList, reqBannerList} from "@/api";
+import {reqCategoryList, reqBannerList, reqFloorList} from "@/api";
 //模块化
 const state = {
     //三级分类数据
     categoryList: [],
     //轮播图数据
-    bannerList: []
-
+    bannerList: [],
+    //floor数据
+    floorList: [],
 }
 const mutations = {
     CATEGORYLIST(state, categoryList) {
@@ -13,6 +14,9 @@ const mutations = {
     },
     BANNERLIST(state, bannerList) {
         state.bannerList = bannerList
+    },
+    FLOORLIST(state, floorList) {
+        state.floorList = floorList
     }
 }
 const actions = {
@@ -24,9 +28,14 @@ const actions = {
     },
     async getBannerList({commit}) {
         let result = await reqBannerList()
-        console.log(result)
         if (result.code === 200) {
             commit('BANNERLIST', result.data)
+        }
+    },
+    async getFloorList({commit}) {
+        let result = await reqFloorList()
+        if (result.code === 200) {
+            commit('FLOORLIST', result.data)
         }
     }
 }

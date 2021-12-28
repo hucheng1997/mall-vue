@@ -1,6 +1,5 @@
 <template>
   <div class="pagination">
-    <div>{{ startNumAndEndNum }}</div>
     <!--    上-->
     <button :disabled="pageNo == 1"
             @click="$emit('getPageNo', pageNo - 1)"

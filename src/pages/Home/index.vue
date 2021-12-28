@@ -19,13 +19,19 @@ import Floor from '@/pages/Home/Floor'
 import Brand from '@/pages/Home/Brand'
 
 import {mapState} from "vuex";
+
 export default {
   name: "Home",
   components: {ListContainer, Recommend, Rank, Like, Floor, Brand},
   mounted() {
     this.$store.dispatch('getFloorList')
+    try {
+      this.$store.dispatch('getUserInfo')
+    } catch (error) {
+      console.log(error)
+    }
   },
-  computed:{
+  computed: {
     ...mapState({
       floorList: state => state.home.floorList
     })
